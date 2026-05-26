@@ -24,6 +24,14 @@ def procesar_datos():
   df['date'] = pd.to_datetime(df["date"])
   df.set_index('date', inplace=True)
 
+  # Agregación mensual
+  resumen_mensual = df.resample('ME').agg({
+    'tavg' : 'mean',
+    'tmin' : 'min',
+    'tmax' : 'max',
+    'prcp' : 'mean'
+  })
+
 
 if __name__ == "__main__":
   print("Se ejecuta el Script analisis_datos.py")
