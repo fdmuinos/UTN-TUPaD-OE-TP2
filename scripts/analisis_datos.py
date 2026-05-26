@@ -2,6 +2,8 @@ import pandas as pd
 import os
 import matplotlib.pyplot as plt
 
+# Script revisado por P3 - Todo OK.
+
 def importar_datos(nombre_archivo):
   """
   Busca e importa el dataset en el que se necesita trabajar. 
