@@ -1,5 +1,6 @@
 import pandas as pd
 import os
+import matplotlib.pyplot as plt
 
 def importar_datos(nombre_archivo):
   """
@@ -16,5 +17,14 @@ def importar_datos(nombre_archivo):
 
   return df
 
+def procesar_datos():
+  df = importar_datos("datos/dataset.csv")
+
+  # Convertir columna 'date' en datatime y establecerla como índice.
+  df['date'] = pd.to_datetime(df["date"])
+  df.set_index('date', inplace=True)
+
+
 if __name__ == "__main__":
   print("Se ejecuta el Script analisis_datos.py")
+  procesar_datos()
