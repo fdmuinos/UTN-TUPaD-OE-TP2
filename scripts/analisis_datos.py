@@ -46,9 +46,17 @@ def procesar_datos():
   # Formateo de los índices
   resumen_mensual.index = resumen_mensual.index.strftime('%B')
 
+  # Exportación de la tabla a archivo CSV
   nombre_csv = "resultados/resumen_clima_buenos_aires_2025.csv"
   resumen_mensual.to_csv(nombre_csv, index_label='Mes')
   print(f'Tabla exportada con éxito en "{nombre_csv}"')
+
+  plt.figure(figsize=(12, 6))
+  plt.plot(df.index, df['tavg'])
+
+  nombre_grafico = "resultados/variacion_temperatura_2025.png"
+  plt.savefig(nombre_grafico)
+  plt.show()
 
 if __name__ == "__main__":
   print("Se ejecuta el Script analisis_datos.py")
