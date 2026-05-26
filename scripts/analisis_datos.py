@@ -18,6 +18,12 @@ def importar_datos(nombre_archivo):
   return df
 
 def procesar_datos():
+  """
+  Calcula el promedio mensual de la temperatura, su valor mínimo, máximo
+  y precipitación del año 2025 en Buenos Aires.
+  Exporta una tabla con los valores agregados y un gráfico de la variación
+  de la temperatura media a lo largo del año.
+  """
   df = importar_datos("datos/dataset.csv")
 
   # Convertir columna 'date' en datatime y establecerla como índice.
@@ -51,13 +57,22 @@ def procesar_datos():
   resumen_mensual.to_csv(nombre_csv, index_label='Mes')
   print(f'Tabla exportada con éxito en "{nombre_csv}"')
 
+  # Gráfico del promedio de la temperatura en durante el año.
   plt.figure(figsize=(12, 6))
-  plt.plot(df.index, df['tavg'])
+  plt.plot(df.index, df['tavg'], label='Temp Promedio Diaria', color='teal', alpha=0.7, linewidth=1.5)
+  plt.fill_between(df.index, df['tmin'], df['tmax'], color='orange', alpha=0.15, label='Rango Máx/Mín Diario')
+  plt.title("Variación de la temperatura de Buenos Aires (Años 2025)", fontsize=14, fontweight="bold", pad=15)
+  plt.xlabel("Fecha", fontsize=12)
+  plt.ylabel("Temperatura (°C)", fontsize=12)
+  plt.grid(True, linestyle='--', alpha=0.5)
+  plt.legend(loc='upper right')
 
   nombre_grafico = "resultados/variacion_temperatura_2025.png"
   plt.savefig(nombre_grafico)
   plt.show()
 
 if __name__ == "__main__":
-  print("Se ejecuta el Script analisis_datos.py")
-  procesar_datos()
+  try:
+    procesar_datos()
+  except Exception as e:
+    print(f"Ocurrió un error: {e}")
