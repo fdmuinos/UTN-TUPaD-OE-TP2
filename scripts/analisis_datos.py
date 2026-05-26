@@ -32,6 +32,18 @@ def procesar_datos():
     'prcp' : 'mean'
   })
 
+  # Renombrar columnas
+  resumen_mensual.columns = [
+    'Temp_Promedio_Mensual',
+    'Temp_Min_Absoluta',
+    'Temp_Max_Absoluta',
+    'Prcp_Promedio_Mensual'
+  ]
+
+  # Redondeo a dos decimales
+  resumen_mensual = resumen_mensual.round(2)
+  print(resumen_mensual)
+
 
 if __name__ == "__main__":
   print("Se ejecuta el Script analisis_datos.py")
