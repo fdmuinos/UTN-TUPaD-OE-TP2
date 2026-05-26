@@ -42,8 +42,13 @@ def procesar_datos():
 
   # Redondeo a dos decimales
   resumen_mensual = resumen_mensual.round(2)
-  print(resumen_mensual)
 
+  # Formateo de los índices
+  resumen_mensual.index = resumen_mensual.index.strftime('%B')
+
+  nombre_csv = "resultados/resumen_clima_buenos_aires_2025.csv"
+  resumen_mensual.to_csv(nombre_csv, index_label='Mes')
+  print(f'Tabla exportada con éxito en "{nombre_csv}"')
 
 if __name__ == "__main__":
   print("Se ejecuta el Script analisis_datos.py")
