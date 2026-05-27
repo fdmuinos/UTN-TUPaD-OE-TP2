@@ -9,7 +9,17 @@ Se simula la participación de tres integrantes:
 Alumno: Fernando Muiños
 
 ## Descripción del dataset
-Aún no se ha elegido.
+Se trabajó con un dataset climático de Buenos Aires durante el año 2025 extraído de este link: https://meteostat.net/es/place/ar/buenos-aires?s=87582&t=2025-01-01/2025-12-31
+Los parámetros utilizados fueron:
+- Temperatura promedio de cada día en °C
+- Temperatura máxima
+- Temperatura mínima
+- Precipitación media en mm.
+
+Se calculó:
+- Promedio mensual de temperatura, su mínimo y máximo.
+- Promedio mensual de precipitaciones. 
 
 ## Instrucciones para ejecutar el script
-Escribir aquí las instrucciones.
+Para ejecutar el script:
+{python scripts/analisis_datos.py}
